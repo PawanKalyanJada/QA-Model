@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question Answering Page</title>
+    <script>
+        //alert("Hope you got your answer!");
+    </script>
+    <style>
+        body{
+            background-color: rgb(255, 193, 193);
+            margin: 0%;
+            font-family: sans-serif;
+        }
+        #all{
+           background-color: white;
+           margin: 100px auto;
+            width: 80%;
+            padding: 45px;
+            border-radius: 5px;
+            box-shadow: 2px 4px 2px rgb(116, 109, 109);
+            
+        }
+        .x{
+        padding: 10px 10px ;
+        }
+         #q-box{
+            background-color: rgb(255, 193, 193);
+            width:100%; 
+            font-size: 20px;
+             border: 5px solid rgb(80, 78, 78);
+            border-radius: 5px;
+            border-collapse: collapse;
+            border-spacing: coll;
+        }
+
+        span{  background-color: white;
+            font-size: 20px;
+            width: 100%;
+             border: 5px solid rgb(80, 78, 78);
+            border-radius: 5px;
+            border-collapse: collapse;
+            border-spacing: coll;
+            padding:10px 15px;
+        } 
+    </style>
+</head>
+<body>
+    <div id="all">
+        <div id="q-box">
+            <div class="x">
+                <b>The content you have given is:</b><br>
+                {{context}}
+            </div>
+            <br>
+            <div class="x">
+                <b>The Question you have asked is:</b><br>
+                {{question}}
+            </div>
+        </div>
+    <br><br>
+    <span>The answer is: <b>{{ans}}</b></span>
+    </div>
+</body>
+</html>

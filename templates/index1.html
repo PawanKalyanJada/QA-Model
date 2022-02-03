@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question Answering Page</title>
+      <style>
+        body{
+          background: radial-gradient(circle,rgb(255, 237, 237) 30%,rgb(253, 198, 198));
+          margin: 0;
+        }
+        #text{
+          font-size: 20px;
+          color:rgb(37, 42, 87);
+        }
+        .btn{
+                Background-Color:rgb(221, 86, 86);
+                Padding: 12px 24px;
+                Font-Size: 18px;
+                Color: rgb(253, 246, 246);
+                Border: None;
+                margin-bottom: 30px;
+                border-radius:4px;
+                cursor: pointer;
+            }
+             form{
+               font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+               color: rgb(37, 42, 87);
+               margin-top: 130px;
+                width : 600px;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: #fac9c9;
+                box-shadow: 2px 4px 4px rgb(139, 124, 124);
+                border-radius: 5px;
+             }
+              
+               #all{
+                 font-size: 22px;
+                padding-left: 80px;
+                padding-right: 80px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            div{
+              margin-bottom: 10px;
+            }
+      </style>
+</head>
+<body>
+   <form action="#" method="post">
+     <div id=all>
+       <p id=text>
+     Give some data and ask question from the data.<br>
+ Ex:<br>Context: One direction has 5 members. Zayn malik left the band in the year 2015. Zayn wrote so many songs but did not release due to company's constraints<br>
+    Question: How many people are there in one direction?
+      </p>
+      <div>
+        Context:
+        <textarea name="context" rows="10" cols="60"></textarea>
+      </div>
+      <div>
+          Question:
+          <br>
+          <small style="color:rgb(37, 42, 87);font-size: 15px;"><b>Note:</b>The question must have answer in the context provided</small><br>
+          <textarea name="question" rows="4" cols="60"></textarea>
+      </div>
+      </div>
+      <br>
+      <div style="text-align: center;">
+      <input class="btn" type="submit" value="Find answer">
+      </div>
+  </form>
+</body>
+</html>
