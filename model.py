@@ -7,7 +7,8 @@ from transformers import BertTokenizerFast
 tokenizer = BertTokenizerFast.from_pretrained('bert-base-uncased')
 import numpy as np
 
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
+@st.experimental_singleton
 def get_model():
     model=TFBertModel.from_pretrained('bert-base-uncased')
     inp1=Input((512,),dtype='int32')
@@ -24,8 +25,9 @@ def get_model():
     m.load_weights('Question Answering Model/model_weights')
     return m
 
-m = get_model()
+
 def find_answer(context,question):
+    m=get_model()
     enc=tokenizer(question,context,padding='max_length',max_length=512,truncation=True)
     k = np.array([enc['input_ids']])
     k1 = np.array([enc['attention_mask']])
@@ -35,10 +37,51 @@ def find_answer(context,question):
     end=np.argmax(res[1].numpy()[0])
     return tokenizer.decode(k[0][start:end+1])
 
-st.title("Question And Answering WebApp!!!")
-context = st.text_area("Enter the context here")
-query = st.text_input("Enter the query")
-predict_button = st.button('Submit')
+st.title("Question And Answering WebApp!")
+st.subheader("Context:")
+st.markdown("One direction has 5 members. Zayn malik left the band in the year 2015. Zayn wrote so many songs but did not release due to company's constraints. As of 2022, the band have sold a total of 70 million records worldwide,making them one of the best-selling boy bands of all time. Forbes ranked them as the fourth highest-earning celebrities in the world in 2015 and 2016.")
+st.subheader("Question:")
+st.markdown("How many people are there in one direction?")
+
+form = st.form(key="form")
+context = form.text_area("Enter the context here")
+query = form.text_input("Enter the question here")
+predict_button = form.form_submit_button(label='Submit')
+
+
 if predict_button:
-    answer = find_answer(context,query)
-    st.text(answer)
+    st.write("Response:")
+    with st.spinner('Finding Answer'):
+        answer = find_answer(context,query)
+        st.write("Answer:",answer)
+
+
+footer="""<style>
+a:link , a:visited{
+color: blue;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:hover,  a:active {
+color: red;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: white;
+color: black;
+text-align: center;
+}
+</style>
+<div class="footer">
+<p>Developed by <a style='display: block; text-align: center;' href="https://www.linkedin.com/in/pawan-kalyan-9704991aa/" target="_blank">Pawan Kalyan Jada</a></p>
+<p>Email ID : <a style='display: block; text-align: center;' target="_blank">pawankalyanjada@gmail.com</a></p>
+</div>
+"""
+st.markdown(footer,unsafe_allow_html=True)
