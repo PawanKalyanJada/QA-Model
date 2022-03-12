@@ -39,7 +39,7 @@ def find_answer(context,question):
 
 st.title("Question And Answering WebApp!")
 st.subheader("Context:")
-st.markdown("One direction has 5 members. Zayn malik left the band in the year 2015. Zayn wrote so many songs but did not release due to company's constraints. As of 2022, the band have sold a total of 70 million records worldwide,making them one of the best-selling boy bands of all time. Forbes ranked them as the fourth highest-earning celebrities in the world in 2015 and 2016.")
+st.markdown("One direction has 5 members. Zayn malik left the band in the year 2015. Zayn wrote so many songs but did not release due to company's constraints. As of 2022, the band have sold a total of 70 million records worldwide, making them one of the best-selling boy bands of all time. Forbes ranked them as the fourth highest-earning celebrities in the world in 2015 and 2016.")
 st.subheader("Question:")
 st.markdown("How many people are there in one direction?")
 
